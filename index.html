@@ -23,7 +23,6 @@
             font-size: 20px;
             font-weight: bold;
             color: white;
-            margin-bottom: 20px; /* Adicionado para criar uma distância do botão */
         }
         .rodape {
             font-size: 12px;
@@ -47,6 +46,14 @@
             align-items: center;
             justify-content: center;
         }
+        .my-button {
+            background-color: black;
+            color: white;
+            border: 1px solid white;
+            padding: 10px 20px;
+            margin: 20px;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -57,9 +64,6 @@
             THE BEGINNING AFTER THE END
         </div>
     </div>
-    <div style="text-align: center; margin-top: 30px; margin-bottom: 30px;">
-        <a href="#" style="display: inline-block; background-color: black; color: white; border: 2px solid white; padding: 10px 20px; font-size: 18px; text-decoration: none;">ARTHUR</a>
-    </div>
     <div class="imagem-container">
         <img src="Disciplinary_Committee_Arthur.png" alt="Imagem" style="display: block; margin: 0 auto; max-width: 100%;">
     </div>
@@ -68,5 +72,37 @@
             Uriel Sentinel - Todos os direitos reservados
         </div>
     </div>
+
+    <script>
+        const button = document.querySelector('.my-button');
+        const elementsToToggleColor = document.querySelectorAll('body, .container, .texto, .rodape-container, .rodape, .my-button');
+        let isBlack = true;
+
+        function toggleColors() {
+            for (const element of elementsToToggleColor) {
+                if (isBlack) {
+                    element.style.backgroundColor = 'white';
+                    element.style.color = 'black';
+                } else {
+                    element.style.backgroundColor = '#080018';
+                    element.style.color = 'white';
+                }
+            }
+            isBlack = !isBlack;
+        }
+
+        function toggleButtonText() {
+            button.textContent = isBlack ? 'LEYWIN' : 'ARTHUR';
+        }
+
+        function toggleTheme() {
+            toggleColors();
+            toggleButtonText();
+        }
+
+        button.addEventListener('click', toggleTheme);
+    </script>
+
+    <button class="my-button">ARTHUR</button>
 </body>
 </html>
