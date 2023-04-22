@@ -1,10 +1,10 @@
-from flask import Flask, request, redirect
+from flask import Flask, request, redirect, render_template
 
 app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return 'Hello, world!'
+    render_template('index.html')
 
 @app.route('/search', methods=['POST'])
 def search():
