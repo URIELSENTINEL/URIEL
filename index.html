@@ -45,14 +45,31 @@
     <h1 style="color: white; text-align: center;">URIEL</h1>
     <p style="color: white; text-align: center;">INTELIGÊNCIA ARTIFICIAL FEITA PARA GUIAR O REI</p>
     <div class="container">
-        <div class="texto">
-            HACKEAR A CONTA DO ANGRY BIRDS DO JOÃO
-        </div>
+        <div class="texto" id="clock">00:00:00</div>
     </div>
     <div class="rodape-container">
         <div class="rodape">
             Uriel Sentinel - Todos os direitos reservados
         </div>
     </div>
+    <script>
+        function updateTime() {
+            var date = new Date();
+            var hours = date.getHours() - 3; // Subtrai 3 horas para ajustar ao horário de Brasília
+            var minutes = date.getMinutes();
+            var seconds = date.getSeconds();
+
+            // Adiciona um zero à frente dos números menores que 10
+            hours = hours < 10 ? "0" + hours : hours;
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            // Atualiza o texto do relógio
+            document.getElementById("clock").innerHTML = hours + ":" + minutes + ":" + seconds;
+        }
+
+        // Atualiza o relógio a cada segundo
+        setInterval(updateTime, 1000);
+    </script>
 </body>
 </html>
