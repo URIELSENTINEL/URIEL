@@ -6,7 +6,7 @@ app = Flask(__name__)
 def home():
     return render_template('index.html')
 
-@app.route('/ARTHUR')
+@app.route('/ARTHUR', methods=['GET', 'POST'])
 def funcao():
     # Aqui você pode definir sua função em Python
     return "Essa é uma função em Python"
