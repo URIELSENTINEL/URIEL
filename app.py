@@ -6,13 +6,15 @@ app = Flask(__name__)
 def index():
     render_template('index.html')
 
-@app.route('/search', methods=['POST'])
-def search():
-    query = request.form['query']
-    if query.lower() == 'google':
-        return redirect('https://www.google.com')
-    else:
-        return 'Pesquisa não suportada'
+@app.route('/', methods=['GET', 'POST'])
+def get_text():
+    if request.method == 'POST':
+        text = request.form['text']
+        if text.lower() == 'google':
+            return redirect('https://www.google.com')
+        else:
+            return 'Texto não suportado'
+
 
 if __name__ == '__main__':
     app.run()
