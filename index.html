@@ -46,8 +46,7 @@
             align-items: center;
             justify-content: center;
         }
-        a {
-            display: inline-block;
+        button {
             background-color: #080018;
             color: white;
             border: 2px solid white;
@@ -56,6 +55,7 @@
             text-decoration: none;
             margin-top: 30px;
             margin-bottom: 30px;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -67,7 +67,7 @@
             THE BEGINNING AFTER THE END
         </div>
     </div>
-    <a href="#">ARTHUR</a>
+    <button onclick="chamar_funcao()">Chamar função</button>
     <div class="imagem-container">
         <img src="Disciplinary_Committee_Arthur.png" alt="Imagem" style="display: block; margin: 0 auto; max-width: 100%;">
     </div>
@@ -76,5 +76,12 @@
             Uriel Sentinel - Todos os direitos reservados
         </div>
     </div>
+    <script>
+        function chamar_funcao() {
+            fetch('/funcao')
+                .then(response => response.text())
+                .then(data => alert(data))
+        }
+    </script>
 </body>
 </html>
