@@ -12,7 +12,10 @@
             width: 600px;
             height: 200px;
             border: 3px solid white;
-            margin: 100px auto 0;
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -31,13 +34,14 @@
         .rodape-container {
             background-color: black;
             padding: 6px 0;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             position: fixed;
             bottom: 0;
             left: 0;
             width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
     </style>
 </head>
@@ -55,7 +59,7 @@
     <script>
         function updateTime() {
             var date = new Date();
-            var hours = date.getHours() - 3; // Subtrai 3 horas para ajustar ao horário de Brasília
+            var hours = date.getHours();
             var minutes = date.getMinutes();
             var seconds = date.getSeconds();
 
