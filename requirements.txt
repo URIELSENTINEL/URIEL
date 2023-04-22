@@ -1,3 +1,2 @@
-CORS
 Flask
 render_template
