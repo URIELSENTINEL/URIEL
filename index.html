@@ -1,15 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Relógio</title>
+    <title>URIEL SENTINEL</title>
     <style>
         body {
             background-color: #080018;
             margin: 0;
             padding: 0;
-            color: white;
-            font-size: 48px;
+        }
+        .container {
+            width: 600px;
+            height: 200px;
+            border: 3px solid white;
+            margin: 100px auto 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #080018;
+        }
+        .texto {
             text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
         }
         .rodape {
             font-size: 12px;
@@ -36,17 +49,6 @@
             HACKEAR A CONTA DO ANGRY BIRDS DO JOÃO
         </div>
     </div>
-    <div id="clock"></div>
-    <script>
-        function updateClock() {
-            const now = new Date();
-            const hours = now.getHours().toString().padStart(2, '0');
-            const minutes = now.getMinutes().toString().padStart(2, '0');
-            const seconds = now.getSeconds().toString().padStart(2, '0');
-            document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
-        }
-        setInterval(updateClock, 1000);
-    </script>
     <div class="rodape-container">
         <div class="rodape">
             Uriel Sentinel - Todos os direitos reservados
