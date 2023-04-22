@@ -12,10 +12,7 @@
             width: 600px;
             height: 200px;
             border: 3px solid white;
-            position: fixed;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
+            margin: 100px auto 0;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -34,14 +31,13 @@
         .rodape-container {
             background-color: black;
             padding: 6px 0;
-            margin-top: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             position: fixed;
             bottom: 0;
             left: 0;
             width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
     </style>
 </head>
@@ -49,31 +45,14 @@
     <h1 style="color: white; text-align: center;">URIEL</h1>
     <p style="color: white; text-align: center;">INTELIGÊNCIA ARTIFICIAL FEITA PARA GUIAR O REI</p>
     <div class="container">
-        <div class="texto" id="clock">00:00:00</div>
+        <div class="texto">
+            HACKEAR A CONTA DO ANGRY BIRDS DO JOÃO
+        </div>
     </div>
     <div class="rodape-container">
         <div class="rodape">
             Uriel Sentinel - Todos os direitos reservados
         </div>
     </div>
-    <script>
-        function updateTime() {
-            var date = new Date();
-            var hours = date.getHours();
-            var minutes = date.getMinutes();
-            var seconds = date.getSeconds();
-
-            // Adiciona um zero à frente dos números menores que 10
-            hours = hours < 10 ? "0" + hours : hours;
-            minutes = minutes < 10 ? "0" + minutes : minutes;
-            seconds = seconds < 10 ? "0" + seconds : seconds;
-
-            // Atualiza o texto do relógio
-            document.getElementById("clock").innerHTML = hours + ":" + minutes + ":" + seconds;
-        }
-
-        // Atualiza o relógio a cada segundo
-        setInterval(updateTime, 1000);
-    </script>
 </body>
 </html>
