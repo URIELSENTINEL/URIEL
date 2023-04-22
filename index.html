@@ -47,23 +47,6 @@
             align-items: center;
             justify-content: center;
         }
-        .botao {
-            display: inline-block;
-            background-color: black;
-            color: white;
-            border: 2px solid white;
-            padding: 10px 20px;
-            font-size: 18px;
-            text-decoration: none;
-            margin-top: 20px; /* Adicionado para criar uma distância do objeto acima */
-            margin-bottom: 20px; /* Adicionado para criar uma distância do objeto abaixo */
-            text-transform: capitalize; /* Adicionado para evitar sublinhado no nome do botão */
-        }
-        .botao.leywin {
-            background-color: white;
-            color: #080018;
-            border: 2px solid #080018;
-        }
     </style>
 </head>
 <body>
@@ -74,7 +57,9 @@
             THE BEGINNING AFTER THE END
         </div>
     </div>
-    <button class="botao arthur" onclick="mudarBotao()">Arthur</button>
+    <div style="text-align: center; margin-top: 30px; margin-bottom: 30px;">
+        <a href="#" style="display: inline-block; background-color: black; color: white; border: 2px solid white; padding: 10px 20px; font-size: 18px; text-decoration: none;">ARTHUR</a>
+    </div>
     <div class="imagem-container">
         <img src="Disciplinary_Committee_Arthur.png" alt="Imagem" style="display: block; margin: 0 auto; max-width: 100%;">
     </div>
@@ -83,11 +68,5 @@
             Uriel Sentinel - Todos os direitos reservados
         </div>
     </div>
-
-    <script>
-        function mudarBotao() {
-            var botao = document.querySelector('.botao');
-            if (botao.classList.contains('arthur')) {
-                botao.innerHTML = 'Leywin';
-                botao.classList.remove('arthur');
-                botao.classList.add('
+</body>
+</html>
