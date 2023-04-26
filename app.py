@@ -9,18 +9,7 @@ freezer = Freezer(app)
 # Define uma rota para o seu aplicativo Flask
 @app.route('/')
 def index():
-    resultado = """
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Resultado</title>
-</head>
-<body>
-    <h1>Resultado:</h1>
-    <p>{{ resultado }}</p>
-</body>
-</html>
-"""
+    resultado = "Este é o meu resultado!"
     return render_template('resultado.html', resultado=resultado)
 
 # Gera as páginas HTML estáticas do seu aplicativo Flask
