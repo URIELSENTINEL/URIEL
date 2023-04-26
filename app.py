@@ -1,10 +1,14 @@
-from flask import Flask, render_template
+from flask_frozen import Freezer
 
+# Define o objeto do aplicativo Flask
 app = Flask(__name__)
 
+# Define o objeto do Freezer
+freezer = Freezer(app)
+
+# Define uma rota para o seu aplicativo Flask
 @app.route('/')
 def index():
-    # Executa seu script Python aqui e armazena o resultado em uma variável
     resultado = """
 <!DOCTYPE html>
 <html>
@@ -18,9 +22,8 @@ def index():
 </html>
 
 """
-    
-    # Renderiza o resultado usando um template HTML
     return render_template('resultado.html', resultado=resultado)
 
+# Gera as páginas HTML estáticas do seu aplicativo Flask
 if __name__ == '__main__':
-    app.run()
+    freezer.freeze()
