@@ -20,7 +20,6 @@ def index():
     <p>{{ resultado }}</p>
 </body>
 </html>
-
 """
     return render_template('resultado.html', resultado=resultado)
 
