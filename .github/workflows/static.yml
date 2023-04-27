@@ -17,6 +17,7 @@ jobs:
     - name: Instalar pacotes
       run: |
         npm install
+        pip install -r requirements.txt
     - name: Construir o site
       run: |
         npm run build
