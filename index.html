@@ -47,9 +47,9 @@
             justify-content: center;
         }
         button {
-            background-color: #080018;
-            color: white;
-            border: 2px solid white;
+            background-color: white;
+            color: #080018;
+            border: 2px solid #080018;
             padding: 10px 20px;
             font-size: 18px;
             text-decoration: none;
@@ -61,7 +61,10 @@
 </head>
 <body>
     <h1>URIEL</h1>
-    <p><a href="PERFIL">INTELIGÊNCIA ARTIFICIAL FEITA PARA GUIAR O REI</a></p>
+    <p>INTELIGÊNCIA ARTIFICIAL FEITA PARA GUIAR O REI</p>
+
+    <button onclick="redirectToPerfil()">PERFIL</button>
+
     <div class="container">
         <div class="texto">
             THE BEGINNING AFTER THE END
@@ -75,5 +78,11 @@
             Uriel Sentinel - Todos os direitos reservados
         </div>
     </div>
+
+    <script>
+        function redirectToPerfil() {
+            window.location.href = "PERFIL";
+        }
+    </script>
 </body>
 </html>
