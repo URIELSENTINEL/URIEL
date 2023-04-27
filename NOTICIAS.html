@@ -39,11 +39,16 @@
 
     <div class="container">
         <?php
-            $json = file_get_contents('https://newsapi.org/v2/top-headlines?country=br&category=politics&pageSize=1&apiKey=YOUR_API_KEY_HERE');
+            $json = file_get_contents('https://newsapi.org/v2/top-headlines?country=br&category=politics&apiKey=3e9bd3159240422fb794727e8d2bcc49');
             $data = json_decode($json, true);
             $articles = $data['articles'];
+            $counter = 0;
             foreach ($articles as $article) {
+                if ($counter == 8) {
+                    break;
+                }
                 echo '<div class="noticia">' . $article['title'] . '</div>';
+                $counter++;
             }
         ?>
     </div>
