@@ -1,10 +1,62 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Minha nova subpágina</title>
-  </head>
-  <body>
-    <h1>Bem-vindo à minha nova subpágina!</h1>
-    <p>Aqui está o conteúdo da minha nova subpágina.</p>
-  </body>
+<head>
+    <title>NOTICIÁRIO</title>
+    <style>
+        body {
+            background-color: #080018;
+            margin: 0;
+            padding: 0;
+            color: white;
+            text-align: center;
+        }
+        h1 {
+            margin-top: 50px;
+            font-size: 48px;
+            font-weight: bold;
+        }
+        .container {
+            width: 800px;
+            height: 300px;
+            border: 3px solid white;
+            margin: 50px auto 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: black;
+            padding: 20px;
+        }
+        .noticia {
+            width: 100%;
+            margin-bottom: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>NOTÍCIAS</h1>
+
+    <div class="container">
+        <?php
+            $json = file_get_contents('https://newsapi.org/v2/top-headlines?country=br&category=politics&apiKey=3e9bd3159240422fb794727e8d2bcc49');
+            $data = json_decode($json, true);
+            $articles = $data['articles'];
+            $counter = 0;
+            foreach ($articles as $article) {
+                if ($counter == 8) {
+                    break;
+                }
+                echo '<div class="noticia">' . $article['title'] . '</div>';
+                $counter++;
+            }
+        ?>
+    </div>
+
+    <script>
+        // Não é possível fazer uma requisição AJAX para outro domínio sem permissão.
+        // Portanto, é necessário usar uma API que permita o acesso aos dados desejados.
+        // Neste caso, utilizamos a News API para obter notícias do Brasil.
+    </script>
+</body>
 </html>
