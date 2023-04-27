@@ -1,33 +1,44 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Meu Site</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Notícias da BBC News</title>
+	<style>
+		body {
+			background-color: #f1f1f1;
+			font-family: Arial, sans-serif;
+		}
+		h1 {
+			text-align: center;
+			margin-top: 50px;
+			color: #333;
+		}
+		ul {
+			list-style-type: none;
+			padding: 0;
+			margin: 0;
+		}
+		li {
+			padding: 10px;
+			border-bottom: 1px solid #ddd;
+		}
+		li a {
+			color: #333;
+			text-decoration: none;
+			font-weight: bold;
+		}
+	</style>
 </head>
 <body>
-	<h1>Notícias da BBC</h1>
-	<div id="feed"></div>
-
-	<script>
-		var xmlhttp = new XMLHttpRequest();
-		xmlhttp.onreadystatechange = function() {
-			if (this.readyState == 4 && this.status == 200) {
-				var xmlDoc = this.responseXML;
-				var items = xmlDoc.getElementsByTagName("item");
-				var html = "";
-
-				for (var i = 0; i < items.length; i++) {
-					var title = items[i].getElementsByTagName("title")[0].childNodes[0].nodeValue;
-					var link = items[i].getElementsByTagName("link")[0].childNodes[0].nodeValue;
-					html += "<p><a href='" + link + "'>" + title + "</a></p>";
-				}
-
-				document.getElementById("feed").innerHTML = html;
-			}
-		};
-		xmlhttp.open("GET", "https://feeds.bbci.co.uk/news/world/rss.xml", true);
-		xmlhttp.send();
-	</script>
+	<h1>Últimas notícias da BBC News</h1>
+	<ul>
+		<script src="https://feeds.bbci.co.uk/news/world/rss.xml"></script>
+		<script>
+			const feed = new RSSFeed('https://feeds.bbci.co.uk/news/world/rss.xml');
+			const numItems = 10; // número de itens que deseja exibir na lista
+			feed.render(document.querySelector('ul'), numItems, (item) => {
+				return `<li><a href="${item.link}" target="_blank">${item.title}</a></li>`;
+			});
+		</script>
+	</ul>
 </body>
 </html>
