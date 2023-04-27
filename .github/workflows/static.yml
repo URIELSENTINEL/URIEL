@@ -1,22 +1,30 @@
-name: Executar Main.py
+name: Deploy para o GitHub Pages
 
 on:
   push:
     branches: [ main ]
 
 jobs:
-  run:
+  deploy:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout do código
       uses: actions/checkout@v2
-    - name: Configurar o ambiente Python
-      uses: actions/setup-python@v2
+    - name: Configurar ambiente Node.js
+      uses: actions/setup-node@v2
       with:
-        python-version: '3.x'
-    - name: Instalar dependências
+        node-version: '14.x'
+    - name: Instalar pacotes
       run: |
-        pip install -r requirements.txt
+        npm install
+    - name: Construir o site
+      run: |
+        npm run build
+    - name: Publicar no GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.URIEL_TOKEN }}
+        publish_dir: ./build
     - name: Executar main.py
       run: |
         python main.py
