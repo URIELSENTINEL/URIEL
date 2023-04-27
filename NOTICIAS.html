@@ -13,13 +13,36 @@
 		}
 		.rectangle {
 			background-color: black;
-			height: 50px;
+			height: 250px;
 			width: 100%;
+			overflow: scroll;
+			padding: 10px;
+			box-sizing: border-box;
+			color: white;
 		}
 	</style>
 </head>
 <body>
-        <h1>NOTÍCIAS</h1>
-	<div class="rectangle"></div>
+    <h1>NOTÍCIAS</h1>
+	<div class="rectangle" id="noticia"></div>
+	<script>
+		const url = 'https://feeds.bbci.co.uk/portuguese/rss.xml';
+		fetch(url)
+			.then(response => response.text())
+			.then(data => {
+				const parser = new DOMParser();
+				const xmlDoc = parser.parseFromString(data, "text/xml");
+				const noticias = xmlDoc.getElementsByTagName('item');
+				const noticiaRecente = noticias[0];
+				const title = noticiaRecente.getElementsByTagName('title')[0].innerHTML;
+				const link = noticiaRecente.getElementsByTagName('link')[0].innerHTML;
+				const description = noticiaRecente.getElementsByTagName('description')[0].innerHTML;
+				document.getElementById('noticia').innerHTML = `<h2>${title}</h2><p>${description}</p><a href="${link}" target="_blank">Leia mais</a>`;
+			})
+			.catch(error => {
+				console.error('Erro ao carregar notícia:', error);
+				document.getElementById('noticia').innerHTML = '<p>Erro ao carregar notícia.</p>';
+			});
+	</script>
 </body>
 </html>
