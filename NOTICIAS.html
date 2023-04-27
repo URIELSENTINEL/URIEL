@@ -38,25 +38,15 @@
     <h1>NOTÍCIAS</h1>
 
     <div class="container">
-        <?php
-            $json = file_get_contents('https://newsapi.org/v2/top-headlines?country=br&category=politics&apiKey=3e9bd3159240422fb794727e8d2bcc49');
-            $data = json_decode($json, true);
-            $articles = $data['articles'];
-            $counter = 0;
-            foreach ($articles as $article) {
-                if ($counter == 8) {
-                    break;
-                }
-                echo '<div class="noticia">' . $article['title'] . '</div>';
-                $counter++;
-            }
-        ?>
+        <div class="noticia">Notícia 1</div>
+        <div class="noticia">Notícia 2</div>
+        <div class="noticia">Notícia 3</div>
+        <div class="noticia">Notícia 4</div>
+        <div class="noticia">Notícia 5</div>
+        <div class="noticia">Notícia 6</div>
+        <div class="noticia">Notícia 7</div>
+        <div class="noticia">Notícia 8</div>
     </div>
 
-    <script>
-        // Não é possível fazer uma requisição AJAX para outro domínio sem permissão.
-        // Portanto, é necessário usar uma API que permita o acesso aos dados desejados.
-        // Neste caso, utilizamos a News API para obter notícias do Brasil.
-    </script>
 </body>
 </html>
