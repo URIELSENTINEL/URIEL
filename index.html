@@ -30,15 +30,23 @@
 </head>
 <body>
 	<h1>Últimas notícias da BBC News</h1>
-	<ul>
-		<script src="https://feeds.bbci.co.uk/news/world/rss.xml"></script>
-		<script>
-			const feed = new RSSFeed('https://feeds.bbci.co.uk/news/world/rss.xml');
-			const numItems = 10; // número de itens que deseja exibir na lista
-			feed.render(document.querySelector('ul'), numItems, (item) => {
-				return `<li><a href="${item.link}" target="_blank">${item.title}</a></li>`;
-			});
-		</script>
-	</ul>
+	<ul id="news-list"></ul>
+	<script>
+		fetch('https://feeds.bbci.co.uk/news/rss.xml')
+			.then(response => response.text())
+			.then(str => new window.DOMParser().parseFromString(str, "text/xml"))
+			.then(data => {
+				const items = data.querySelectorAll("item");
+				let newsList = document.getElementById("news-list");
+				items.forEach(item => {
+					const title = item.querySelector("title").textContent;
+					const link = item.querySelector("link").textContent;
+					let li = document.createElement("li");
+					li.innerHTML = `<a href='${link}' target='_blank'>${title}</a>`;
+					newsList.appendChild(li);
+				})
+			})
+			.catch(err => console.log(err));
+	</script>
 </body>
 </html>
