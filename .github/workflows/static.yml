@@ -1,17 +1,22 @@
-name: Implantação Estática
+name: Executar Main.py
 
 on:
   push:
     branches: [ main ]
 
 jobs:
-  deploy:
+  run:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout do código
       uses: actions/checkout@v2
-    - name: Implantação Estática
-      uses: peaceiris/actions-gh-pages@v3.7.0
+    - name: Configurar o ambiente Python
+      uses: actions/setup-python@v2
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./public
+        python-version: '3.x'
+    - name: Instalar dependências
+      run: |
+        pip install -r requirements.txt
+    - name: Executar main.py
+      run: |
+        python main.py
