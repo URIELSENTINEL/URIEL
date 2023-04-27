@@ -14,9 +14,68 @@
 			text-align: center;
 			margin-top: 20%;
 		}
+
+		.noticia-container {
+			width: 600px;
+			margin: 0 auto;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			padding: 20px;
+			background-color: white;
+			border-radius: 10px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+			margin-top: 50px;
+		}
+
+		.noticia-container h2 {
+			font-size: 24px;
+			margin-bottom: 10px;
+		}
+
+		.noticia-container p {
+			font-size: 18px;
+			line-height: 1.5;
+			margin-bottom: 20px;
+			text-align: justify;
+		}
+
+		.noticia-container a {
+			color: #0078D7;
+			text-decoration: none;
+		}
 	</style>
 </head>
 <body>
 	<h1>NOTÍCIAS</h1>
+
+	<div class="noticia-container">
+		<h2>Carregando notícia...</h2>
+		<p>Aguarde um momento enquanto a notícia mais recente sobre política no Brasil da BBC News é carregada.</p>
+	</div>
+
+	<script>
+		fetch('https://newsapi.org/v2/top-headlines?country=br&category=politics&sources=bbc-news&apiKey=<SUA CHAVE DE API>')
+			.then(response => response.json())
+			.then(data => {
+				const noticia = data.articles[0];
+
+				const noticiaContainer = document.querySelector('.noticia-container');
+				noticiaContainer.innerHTML = `
+					<h2>${noticia.title}</h2>
+					<p>${noticia.description}</p>
+					<p>Fonte: <a href="${noticia.url}" target="_blank">${noticia.source.name}</a></p>
+				`;
+			})
+			.catch(error => {
+				console.error(error);
+				const noticiaContainer = document.querySelector('.noticia-container');
+				noticiaContainer.innerHTML = `
+					<h2>Erro ao carregar notícia</h2>
+					<p>Não foi possível carregar a notícia mais recente sobre política no Brasil da BBC News.</p>
+				`;
+			});
+	</script>
 </body>
 </html>
